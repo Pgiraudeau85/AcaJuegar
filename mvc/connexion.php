@@ -5,7 +5,7 @@ class MVC_Connexion {
     private static $_pdo;
 
     private function __construct() {
-        $dsn = "sqlsrv:Server=".BDD_HOST.";Database=".BDD_NAME;
+        $dsn = "pgsql:host=".BDD_HOST.";port=".BDD_PORT.";dbname=".BDD_NAME;
         //$dsn = 'sqlsrv:dbname='.BDD_HOST.'/'.BDD_NAME;        
         
         self::$_pdo = new PDO($dsn, BDD_USER, BDD_PWD);
