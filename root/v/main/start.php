@@ -1,2 +1,1 @@
-<?php
- echo 'teste';
+<h1>Commencer</h1>
