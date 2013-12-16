@@ -8,7 +8,7 @@ class ROOT_M_Choix extends MVC_Table {
         return ROOT_M_Choix::getInstance()->where('question_id = ?',array($choixId));
     }
     
-    public static function get($id){
+    public static function getChoix($id){
         return ROOT_M_Choix::getInstance()->get($id);
     }
 }
