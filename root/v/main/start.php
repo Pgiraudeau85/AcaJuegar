@@ -17,3 +17,5 @@ var_dump($this->questions);
 //    [1] -> idChoix
 //...
 //puis les résultats seront traitées
+
+//plugin jquery pour afficher les formulaires / gérer les réponses
