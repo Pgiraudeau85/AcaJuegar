@@ -4,7 +4,20 @@
         <meta charset="utf8"/>
         <link rel="stylesheet" type="text/css" href="../_/css/bootstrap-theme.css"/>
         <link rel="stylesheet" type="text/css" href="../_/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="../_/css/flipclock.scss"/>
         <script type="text/javascript" src="../_/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../_/js/flipclock.js"></script>
+        <script type="text/javascript" src="../_/js/flipclock.min.js"></script>
+        <script type="text/javascript" src="../_/js/base.js"></script>
+        <script type="text/javascript" src="../_/js/es-es.js"></script>
+        <script type="text/javascript" src="../_/js/counter.js"></script>
+        <script type="text/javascript" src="../_/js/dailycounter.js"></script>
+        <script type="text/javascript" src="../_/js/hourlycounter.js"></script>
+        <script type="text/javascript" src="../_/js/hourlycounter.js"></script>
+        <script type="text/javascript" src="../_/js/minutecounter.js"></script>
+        <script type="text/javascript" src="../_/js/twelvehourclock.js"></script>
+        <script type="text/javascript" src="../_/js/twentyfourhourclock.js"></script>
+        <script type="text/javascript" src="../_/js/chrono.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-inverse" role="navigation">
@@ -44,6 +57,9 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
+
+        <div class="clock" style="margin:2em;"></div>
+	<div class="message"></div>
 
         <?php
         include('c:/wamp/www/AcaJuegar/installs/install01/include.php');
