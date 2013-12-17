@@ -9,16 +9,17 @@ class ROOT_C_Main extends MVC_Controleur {
     public function start(){
         
         //on cherche les questions
-        $questionsQuery = ROOT_M_Question::getRandomQuestions();
+        //$questionsQuery = ROOT_M_Question::getRandomQuestions();       
         //on intitialise le tableau qui sera passé à la vue
         $questionsChoix = array();
         //on parcourt les questions pour chercher les choix
         foreach($questionsQuery as $question){
             $questions['question'] = $question;
-            $questions['choix'] = ROOT_M_Choix::getChoixQuestion($question->id);
+            //$questions['choix'] = ROOT_M_Choix::getChoixQuestion($question->id);
             //on ajoute la question au tableau contenant toutes les questions avec leur choix + réponse
             $questionsChoix[] = $questions;
         }
+        $questionsChoix = unserialize(file_get_contents('data'));
         $this->_vue->questions = $questionsChoix;
     }
     
