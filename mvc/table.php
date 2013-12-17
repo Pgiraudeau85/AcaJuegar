@@ -118,5 +118,18 @@ abstract class MVC_Table {
             return null;
         }
     }
+    
+    function select($select) {
+        $query = $select;
+        $queryPrepare = $this->pdo()->query($query);
+        $result = $queryPrepare->fetchAll(
+                PDO::FETCH_CLASS, $this->_tableRow
+        );
+        foreach ($result as $o) {
+            $o->setTable($this->_table);
+        }
+        return $result;
+    }
+    
 
 }
