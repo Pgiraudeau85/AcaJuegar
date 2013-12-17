@@ -1,6 +1,6 @@
 <?php
 
-echo 'el juego empienza';
+echo 'El juego empienza';
 
 var_dump($this->questions);
 

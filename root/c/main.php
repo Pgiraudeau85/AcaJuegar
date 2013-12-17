@@ -10,10 +10,11 @@ class ROOT_C_Main extends MVC_Controleur {
         
         //on cherche les questions
         $questionsQuery = ROOT_M_Question::getRandomQuestions();
+        var_dump($questionsQuery);
         //on intitialise le tableau qui sera passé à la vue
         $questionsChoix = array();
         //on parcourt les questions pour chercher les choix
-        foreach($questionQuery as $question){
+        foreach($questionsQuery as $question){
             $questions['question'] = $question;
             $questions['choix'] = ROOT_M_Choix::getChoixQuestion($question->id);
             //on ajoute la question au tableau contenant toutes les questions avec leur choix + réponse
@@ -37,7 +38,7 @@ class ROOT_C_Main extends MVC_Controleur {
         }
         
         //TODO gérer le score + les badges
-        $this->_vue->nbBonneReponse = $bonneReponse;
+        $this->_vue->nbBonneReponse = $nbBonneReponse;
         $this->_vue->nbQuestions = sizeof($reponses);
     }
     
