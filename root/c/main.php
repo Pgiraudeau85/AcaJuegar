@@ -10,7 +10,6 @@ class ROOT_C_Main extends MVC_Controleur {
         
         //on cherche les questions
         $questionsQuery = ROOT_M_Question::getRandomQuestions();
-        var_dump($questionsQuery);
         //on intitialise le tableau qui sera passé à la vue
         $questionsChoix = array();
         //on parcourt les questions pour chercher les choix
