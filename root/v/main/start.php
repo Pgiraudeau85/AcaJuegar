@@ -22,7 +22,7 @@ var_dump($this->questions);
     <form id="<?php echo $question['question']->id ?>">
         Pregunta N° <script> document.write(numeroQuestion);</script>: <?php echo $question['question']->libelle ;?><br/>
         <?php for($i = 0 ; $i < sizeof($question['choix']);$i++): ?>
-        <input type="radio" value="<?php echo $question['choix'][$i]->id ?>"/>
+        <input type="radio" name="<?php echo $question['question']->id ?>" value="<?php echo $question['choix'][$i]->id ?>"/>
             <?php echo $question['choix'][$i]->libelle ?><br/>
         <?php endfor ?>
     </form>
