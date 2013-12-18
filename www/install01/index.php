@@ -5,6 +5,8 @@
         <link rel="stylesheet" type="text/css" href="../_/css/bootstrap-theme.css"/>
         <link rel="stylesheet" type="text/css" href="../_/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="../_/css/flipclock.scss"/>
+        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+        <script type="text/javascript" src="../_/js/acajuegar.js"></script>
         <script type="text/javascript" src="../_/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../_/js/flipclock.js"></script>
         <script type="text/javascript" src="../_/js/flipclock.min.js"></script>

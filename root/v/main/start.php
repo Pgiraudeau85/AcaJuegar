@@ -1,31 +1,20 @@
-<?php
-echo 'El juego empienza';
-
-var_dump($this->questions);
-
-//initialisée une variable de temps (temps de jeu 10 min)
-//on aura x formulaires (x correspondant aux nb de questions)
-//chaque formulaire sera gérée par jquery avec la méthode .submit()
-//chaque réponse sera enregistrée dans une variable de session:
-//[0] ->
-//    [0] -> idQuestion
-//    [1] -> idChoix
-//[1] ->
-//    [0] -> idQuestion
-//    [1] -> idChoix
-//...
-//puis les résultats seront traitées
-//plugin jquery pour afficher les formulaires / gérer les réponses
-?>
-<script> var numeroQuestion = 1 ;</script>
-<?php foreach ($this->questions as $question): ?>
-    <form id="<?php echo $question['question']->id ?>">
-        Pregunta N° <script> document.write(numeroQuestion);</script>: <?php echo $question['question']->libelle ;?><br/>
-        <?php for($i = 0 ; $i < sizeof($question['choix']);$i++): ?>
-        <input type="radio" name="<?php echo $question['question']->id ?>" value="<?php echo $question['choix'][$i]->id ?>"/>
-            <?php echo $question['choix'][$i]->libelle ?><br/>
-        <?php endfor ?>
+<?php //var_dump($this->preguntas);  ?>
+<div id="preguntas">
+    <form>
+        <?php
+        $numeroPregunta = 1;
+        foreach ($this->preguntas as $pregunta) {
+            $string = '<div id=' . $numeroPregunta . '>';
+            $string .='Pregunta numero ' . $numeroPregunta . '<br/>';
+            $string .= $pregunta['question']->libelle . '<br/>';
+            $string .= '<input type="hidden" name="seleccionId" value="' . $pregunta['question']->id . '"/>';
+            for ($i = 0; $i < sizeof($pregunta['choix']); $i++) {
+                $string .= '<img src="../_/image/imgRep/' . $pregunta['question']->id . '_' . $pregunta['choix'][$i]->id . '" value="' . $pregunta['choix'][$i]->id . '"/>';
+            }
+            $string .= '</div>';
+            echo $string;
+            $numeroPregunta ++;
+        }
+        ?>
     </form>
-    <script> var numeroQuestion ++ ;</script>
-<?php endforeach; ?>
-
+</div>

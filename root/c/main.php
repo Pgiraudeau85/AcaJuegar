@@ -6,21 +6,23 @@ class ROOT_C_Main extends MVC_Controleur {
     public function index(){
     }
     
-    public function start(){
-        
+    public function sessionQuestion(){
+        $_SESSION['reponses'][] = MVC_A::get('element');
+    }
+    
+    public function start(){      
         //on cherche les questions
-        //$questionsQuery = ROOT_M_Question::getRandomQuestions();       
+        $questionsQuery = ROOT_M_Question::getRandomQuestions();       
         //on intitialise le tableau qui sera passé à la vue
         $questionsChoix = array();
         //on parcourt les questions pour chercher les choix
         foreach($questionsQuery as $question){
             $questions['question'] = $question;
-            //$questions['choix'] = ROOT_M_Choix::getChoixQuestion($question->id);
+            $questions['choix'] = ROOT_M_Choix::getChoixQuestion($question->id);
             //on ajoute la question au tableau contenant toutes les questions avec leur choix + réponse
             $questionsChoix[] = $questions;
         }
-        $questionsChoix = unserialize(file_get_contents('data'));
-        $this->_vue->questions = $questionsChoix;
+        $this->_vue->preguntas = $questionsChoix;
     }
     
     public function resultat(){
@@ -35,8 +37,7 @@ class ROOT_C_Main extends MVC_Controleur {
             if($choix->determinerBonneReponse($question->id)){
                 $nbBonneReponse ++;
             }
-        }
-        
+        }     
         //TODO gérer le score + les badges
         $this->_vue->nbBonneReponse = $nbBonneReponse;
         $this->_vue->nbQuestions = sizeof($reponses);
