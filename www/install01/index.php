@@ -60,9 +60,6 @@
             </div><!-- /.navbar-collapse -->
         </nav>
 
-        <div class="clock" style="margin:2em;"></div>
-	<div class="message"></div>
-
         <?php
         include('c:/wamp/www/AcaJuegar/installs/install01/include.php');
         include(ROOT . 'index.php');

@@ -1,4 +1,4 @@
-<?php //var_dump($this->preguntas);  ?>
+<?php //var_dump($this->preguntas);   ?>
 <div id="preguntas">
     <form>
         <?php
@@ -17,4 +17,9 @@
         }
         ?>
     </form>
+</div>
+
+<div class="row bottom">
+    <div class="clock" style="margin:2em;"></div>
+    <div class="message"></div>
 </div>
