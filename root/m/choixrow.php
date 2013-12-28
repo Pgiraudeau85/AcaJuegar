@@ -2,8 +2,8 @@
 
 class ROOT_M_ChoixRow extends MVC_TableRow {
 
- public function determinerBonneReponse($questionId){
-        if(ROOT_M_Choix::getInstance()->where('question_id = ? and estReponse = true',array($questionId))){
+ public function determinerBonneReponse(){
+        if(ROOT_M_Choix::getInstance()->whereFirst('id = ? and estReponse = true',array($this->id)) != null){
             return true;
         }else{
             return false;

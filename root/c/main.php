@@ -1,22 +1,24 @@
 <?php
 
 class ROOT_C_Main extends MVC_Controleur {
-    
-    
-    public function index(){
+
+    public function index() {
+        if(isset($_SESSION['respuestas'])){
+            unset($_SESSION['respuestas']);
+        }
     }
-    
-    public function sessionQuestion(){
-        $_SESSION['reponses'][] = MVC_A::get('element');
+
+    public function respuestas() {
+        $_SESSION['respuestas'] = MVC_A::get('respuestas');
     }
-    
-    public function start(){      
+
+    public function start() { 
         //on cherche les questions
-        $questionsQuery = ROOT_M_Question::getRandomQuestions();       
+        $questionsQuery = ROOT_M_Question::getRandomQuestions();
         //on intitialise le tableau qui sera passé à la vue
         $questionsChoix = array();
         //on parcourt les questions pour chercher les choix
-        foreach($questionsQuery as $question){
+        foreach ($questionsQuery as $question) {
             $questions['question'] = $question;
             $questions['choix'] = ROOT_M_Choix::getChoixQuestion($question->id);
             //on ajoute la question au tableau contenant toutes les questions avec leur choix + réponse
@@ -24,23 +26,25 @@ class ROOT_C_Main extends MVC_Controleur {
         }
         $this->_vue->preguntas = $questionsChoix;
     }
-    
-    public function resultat(){
+
+    public function resultat() {
+        var_dump($_SESSION);
         $temps = MVC_A::get('temps');
-        $reponses = $_SESSION['reponses'];
+        $reponses = $_SESSION['respuestas'];
         $nbBonneReponse = 0;
         //on détermine si la réponse est correcte pour chaque question
-        for($i = 0 ; $i < sizeof($reponses) ; $i++){
-            $question = ROOT_M_Question::getQuestion($reponses[$i][0]);
-            $choix = ROOT_M_Choix::getChoix($reponses[$i][1]);
+        for ($i = 0; $i < sizeof($reponses); $i++) {
+            $questionsReponses = explode('_', $reponses[$i]);
+            $question = ROOT_M_Question::getQuestion($questionsReponses[0]);
+            $choix = ROOT_M_Choix::getChoix($questionsReponses[1]);
             //si oui on incrémente le nombre de bonne réponse
-            if($choix->determinerBonneReponse($question->id)){
+            if ($choix->determinerBonneReponse()) {
                 $nbBonneReponse ++;
             }
-        }     
+        }
         //TODO gérer le score + les badges
         $this->_vue->nbBonneReponse = $nbBonneReponse;
         $this->_vue->nbQuestions = sizeof($reponses);
     }
-    
+
 }

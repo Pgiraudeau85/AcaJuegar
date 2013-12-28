@@ -4,7 +4,9 @@
         <meta charset="utf8"/>
         <link rel="stylesheet" type="text/css" href="../_/css/bootstrap-theme.css"/>
         <link rel="stylesheet" type="text/css" href="../_/css/bootstrap.css"/>
-        <link rel="stylesheet" type="text/css" href="../_/css/flipclock.scss"/>
+        <link rel="stylesheet" type="text/css" href="../_/css/flipclock.css"/>
+        <link rel="stylesheet" type="text/css" href="../_/css/acajuegar.css"/>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
         <script type="text/javascript" src="../_/js/acajuegar.js"></script>
         <script type="text/javascript" src="../_/js/bootstrap.min.js"></script>
@@ -31,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"> <b> <h4 align="center">AcaJuegar - Cuestionario sobre América Latina</h4>  </b></a>
+                <a class="navbar-brand" href="."> <b> <h4 align="center">AcaJuegar - Cuestionario sobre América Latina</h4>  </b></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->

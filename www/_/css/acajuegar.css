@@ -1,0 +1,11 @@
+.display{
+    display: none;
+}
+.seleccionada{
+    border : 5px solid #1b8be0;
+}
+
+.seleccion:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
