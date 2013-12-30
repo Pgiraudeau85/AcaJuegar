@@ -2,7 +2,7 @@
 
 class ROOT_C_Main extends MVC_Controleur {
 
-    public function index() {
+    public function start() {
         if(isset($_SESSION['respuestas'])){
             unset($_SESSION['respuestas']);
         }
@@ -12,7 +12,7 @@ class ROOT_C_Main extends MVC_Controleur {
         $_SESSION['respuestas'] = MVC_A::get('respuestas');
     }
 
-    public function start() { 
+    public function preguntas() { 
         //on cherche les questions
         $questionsQuery = ROOT_M_Question::getRandomQuestions();
         //on intitialise le tableau qui sera passé à la vue
@@ -28,9 +28,8 @@ class ROOT_C_Main extends MVC_Controleur {
     }
 
     public function resultat() {
-        var_dump($_SESSION);
         $temps = MVC_A::get('temps');
-        $reponses = $_SESSION['respuestas'];
+        $reponses = explode(';',MVC_A::get('inputRespuestas'));
         $nbBonneReponse = 0;
         //on détermine si la réponse est correcte pour chaque question
         for ($i = 0; $i < sizeof($reponses); $i++) {

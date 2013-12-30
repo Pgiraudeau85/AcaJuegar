@@ -1,12 +1,12 @@
 /**
-- * permite de seleccionar un seleccion
-- * @param {object} e = this
-- * @param {int} id
-- * @returns {void}
-- */
+ - * permite de seleccionar un seleccion
+ - * @param {object} e = this
+ - * @param {int} id
+ - * @returns {void}
+ - */
 
 function seleccionar(e, id) {
-   $div = e.parent();
+    $div = e.parent();
     $imgs = $div.find('img');
     nbImageSeleccionada = 0;
     //eleminar el seleccion anterior
@@ -18,11 +18,11 @@ function seleccionar(e, id) {
 }
 
 /**
-- * 
-- * @param {int} id
-- * @param {string} divP
-- * @returns {}
-- */
+ - * 
+ - * @param {int} id
+ - * @param {string} divP
+ - * @returns {}
+ - */
 function siguiente(id, divP) {
     $divP = $('#' + divP);
     $div = $('#' + id);
@@ -39,23 +39,17 @@ function siguiente(id, divP) {
     }
 }
 /**
-- * enviar el forma
-- * @returns {void}
-- */
+ - * enviar el forma
+ - * @returns {void}
+ - */
 function enviarForma() {
     $imgs = $('.seleccionada');
     console.log($imgs);
-    var result = [];
+    var result = '';
     for (i = 0; i < $imgs.length; i++) {
-        result.push($($imgs[i]).attr('id'));
+        result += ';' + $($imgs[i]).attr('id');
     }
     console.log(result);
-    $.ajax({
-        type: "post",
-        url: ("?c=main&a=respuestas"),
-        data: {respuestas: result},
-        success: function() {
-            document.location.href = "?c=main&a=resultat";
-        }
-    });
+    $('#inputRespuestas').val(result.substring(1));
+    $('form').submit();
 }

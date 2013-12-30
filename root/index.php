@@ -17,7 +17,7 @@ if(MVC_A::get('c') === null) {
 
 //appel de l'action par défaut
 if (MVC_A::get('a') === null) {
-    $a = 'index';
+    $a = 'start';
 }else{
     $a = MVC_A::get('a');
     
