@@ -1,4 +1,6 @@
-<?php //var_dump($this->preguntas);     ?>
+<div class="progress progress-striped active">
+    <div id="bar" class="bar"></div>
+</div>
 <div id="preguntas">
     <form action="?c=main&a=resultat" method="post">
         <?php
@@ -22,11 +24,18 @@
         }
         ?>
         <input id="inputRespuestas" type="hidden" name="inputRespuestas"/>
+        <input id="inputTiempo" type="hidden" name="inputTiempo" value="<?php echo time() ?>"/>
     </form>
-        <script> $('#1').toggleClass('display');</script>
+    <script>
+        $('#1').toggleClass('display');
+        setTiempo(10);
+    </script>
 </div>
 
+
+<!--
 <div class="row bottom">
     <div class="clock" style="margin:2em;"></div>
     <div class="message"></div>
 </div>
+-->

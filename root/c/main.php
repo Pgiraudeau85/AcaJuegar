@@ -28,8 +28,12 @@ class ROOT_C_Main extends MVC_Controleur {
     }
 
     public function resultat() {
-        $temps = MVC_A::get('temps');
-        $reponses = explode(';',MVC_A::get('inputRespuestas'));
+        $temps = time() - MVC_A::get('inputTiempo');
+        if(MVC_A::get('inputRespuestas') != ''){
+            $reponses = explode(';',MVC_A::get('inputRespuestas'));
+        }else{
+            $reponses = null;
+        }
         $nbBonneReponse = 0;
         //on détermine si la réponse est correcte pour chaque question
         for ($i = 0; $i < sizeof($reponses); $i++) {

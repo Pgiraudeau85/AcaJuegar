@@ -53,3 +53,17 @@ function enviarForma() {
     $('#inputRespuestas').val(result.substring(1));
     $('form').submit();
 }
+
+/**
+* permite a definir el tiempo para hacer el juego
+*/
+function setTiempo(tiempo) {
+    //al fin del tiempo
+    var temp = 0;
+    for (i = tiempo ;i > 0;i--) {
+        setTimeout("$('#bar').css('width','" + ((tiempo - i)/tiempo)*100 + "%')",temp);
+        temp += 1000;
+    }
+     setTimeout('enviarForma()',temp += 1000);
+}
+
