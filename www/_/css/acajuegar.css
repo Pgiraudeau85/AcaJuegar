@@ -2,7 +2,7 @@
     display: none;
 }
 .seleccionada{
-    border : 5px solid #1b8be0;
+    border : 2px solid #1b8be0;
 }
 
 .seleccion:hover{

@@ -1,19 +1,18 @@
 /**
  - * permite de seleccionar un seleccion
- - * @param {object} e = this
  - * @param {int} id
  - * @returns {void}
  - */
 
-function seleccionar(e, id) {
-    $div = e.parent();
+function seleccionar(id,imgSeleccionada) {
+    $div = $('#seleccion_' + id);
     $imgs = $div.find('img');
     nbImageSeleccionada = 0;
     //eleminar el seleccion anterior
     for (i = 0; i < $imgs.length; i++) {
         $($imgs[i]).removeClass("seleccionada");
     }
-    e.toggleClass("seleccionada");
+    $(imgSeleccionada).toggleClass("seleccionada");
 
 }
 

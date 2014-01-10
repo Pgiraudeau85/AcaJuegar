@@ -38,7 +38,7 @@ class ROOT_C_Main extends MVC_Controleur {
         //on détermine si la réponse est correcte pour chaque question
         for ($i = 0; $i < sizeof($reponses); $i++) {
             $questionsReponses = explode('_', $reponses[$i]);
-            $question = ROOT_M_Question::getQuestion($questionsReponses[0]);
+            //$question = ROOT_M_Question::getQuestion($questionsReponses[0]);
             $choix = ROOT_M_Choix::getChoix($questionsReponses[1]);
             //si oui on incrémente le nombre de bonne réponse
             if ($choix->determinerBonneReponse()) {
