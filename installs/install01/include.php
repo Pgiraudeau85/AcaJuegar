@@ -9,3 +9,6 @@ define('BDD_PORT','5432');
 define('BDD_NAME','acajuegar');
 define('BDD_USER','admin');
 define('BDD_PWD','pwsio');
+
+//projet
+define('TEMPS_JEU',600);

@@ -45,9 +45,14 @@ class ROOT_C_Main extends MVC_Controleur {
                 $nbBonneReponse ++;
             }
         }
-        //TODO gérer le score + les badges
+        
+        $score = round(($nbBonneReponse / sizeof($reponses))) * (TEMPS_JEU - $temps);
+        $succes = ROOT_M_Succes::getSucces($temps, $nbBonneReponse);
+        
         $this->_vue->nbBonneReponse = $nbBonneReponse;
         $this->_vue->nbQuestions = sizeof($reponses);
+        $this->_vue->score = $score;
+        $this->_vue->succes = $succes;
     }
 
 }

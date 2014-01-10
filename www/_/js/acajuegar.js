@@ -57,13 +57,13 @@ function enviarForma() {
 /**
 * permite a definir el tiempo para hacer el juego
 */
-function setTiempo(tiempo) {
-    //al fin del tiempo
+function setTiempo(tiempo) {  
     var temp = 0;
     for (i = tiempo ;i > 0;i--) {
-        setTimeout("$('#bar').css('width','" + ((tiempo - i)/tiempo)*100 + "%')",temp);
+        setTimeout("$('#bar').css('width','" + ((tiempo - i) / tiempo) * 100 + "%')", temp);
         temp += 1000;
     }
-     setTimeout('enviarForma()',temp += 1000);
+    //al fin del tiempo
+    setTimeout('enviarForma()', temp += 1000);
 }
 
