@@ -45,8 +45,11 @@ class ROOT_C_Main extends MVC_Controleur {
                 $nbBonneReponse ++;
             }
         }
-        
-        $score = round(($nbBonneReponse / sizeof($reponses))) * (TEMPS_JEU - $temps);
+        if(sizeof($reponses)>0){
+            $score = round(($nbBonneReponse / sizeof($reponses)) * (TEMPS_JEU - $temps));
+        }else{
+            $score = 0;
+        }
         $succes = ROOT_M_Succes::getSucces($temps, $nbBonneReponse);
         
         $this->_vue->nbBonneReponse = $nbBonneReponse;
