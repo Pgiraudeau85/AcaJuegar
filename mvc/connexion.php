@@ -12,7 +12,7 @@ class MVC_Connexion {
                 . ';host='
                 . BDD_HOST;     
         
-        self::$_pdo = new PDO($dsn, BDD_USER, BDD_PWD);
+        self::$_pdo = new PDO($dsn, BDD_USER, BDD_PWD, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         self::$_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 

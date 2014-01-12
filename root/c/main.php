@@ -34,6 +34,7 @@ class ROOT_C_Main extends MVC_Controleur {
         }else{
             $reponses = null;
         }
+        $nbPreguntas = MVC_A::get('inputPreguntas');
         $nbBonneReponse = 0;
         //on détermine si la réponse est correcte pour chaque question
         for ($i = 0; $i < sizeof($reponses); $i++) {
@@ -46,14 +47,14 @@ class ROOT_C_Main extends MVC_Controleur {
             }
         }
         if(sizeof($reponses)>0){
-            $score = round(($nbBonneReponse / sizeof($reponses)) * (TEMPS_JEU - $temps));
+            $score = round(($nbBonneReponse / $nbPreguntas) * (TEMPS_JEU - $temps));
         }else{
             $score = 0;
         }
         $succes = ROOT_M_Succes::getSucces($temps, $nbBonneReponse);
         
         $this->_vue->nbBonneReponse = $nbBonneReponse;
-        $this->_vue->nbQuestions = sizeof($reponses);
+        $this->_vue->nbQuestions = $nbPreguntas;
         $this->_vue->score = $score;
         $this->_vue->succes = $succes;
     }

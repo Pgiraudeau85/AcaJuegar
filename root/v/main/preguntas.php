@@ -2,6 +2,10 @@
     <div class="progress progress-striped active">
         <div id="bar" class="bar"></div>
     </div>
+    <div>
+        <div id="errorMessage">
+        </div>
+    </div>
     <div id="preguntas">
         <form action="?c=main&a=resultat" method="post">
             <?php
@@ -34,9 +38,10 @@
             ?>
             <input id="inputRespuestas" type="hidden" name="inputRespuestas"/>
             <input id="inputTiempo" type="hidden" name="inputTiempo" value="<?php echo time() ?>"/>
+            <input id="inputPreguntas" type="hidden" name="inputPreguntas" value="<?php echo $nbPreguntas ?>"/>
         </form>
         <script>
-            $('#1').toggleClass('display');
+            $('#1').removeClass('display');
             setTiempo(<?php echo TEMPS_JEU; ?>);
         </script>
     </div>

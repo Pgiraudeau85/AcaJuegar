@@ -1,3 +1,7 @@
+function error(){
+    $('#errorMessage').html("<div class=\"alert alert-error\">¡ Huy ! No has respondido a la pregunta</div>");
+}
+
 /**
  - * permite de seleccionar un seleccion
  - * @param {int} id
@@ -13,7 +17,6 @@ function seleccionar(id,imgSeleccionada) {
         $($imgs[i]).removeClass("seleccionada");
     }
     $(imgSeleccionada).toggleClass("seleccionada");
-
 }
 
 /**
@@ -26,15 +29,28 @@ function siguiente(id, divP) {
     $divP = $('#' + divP);
     $div = $('#' + id);
     id = id + 1;
-    $divSigiuente = $('#' + id);
-    $div.css('display', 'none');
-    //si hay una pregunta sigiuente
-    if ($divP.find($divSigiuente).length === 1) {
-        $div.toggleClass('display');
-        $divSigiuente.toggleClass('display');
-        //sino enviar el forma
-    } else {
-        enviarForma();
+    $divSigiuente = $('#' + id);    
+    
+    //si hay una respuesta
+    hayRespuesta = false;
+    $imgs = $div.find('img');
+    for( i=0 ; i < $imgs.length; i++) {
+        if($($imgs[i]).hasClass("seleccionada")) {
+            hayRespuesta = true;
+        }
+    }
+    if(hayRespuesta){
+        //si hay una pregunta sigiuente
+        if ($divP.find($divSigiuente).length === 1) {
+            $div.toggleClass('display');
+            $divSigiuente.toggleClass('display');
+            if($('#errorMessage').html(""));
+            //sino enviar el forma
+        } else {
+            enviarForma();
+        }
+    }else{
+        error();
     }
 }
 /**

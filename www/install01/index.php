@@ -1,7 +1,6 @@
-<?php session_start(); ?>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8" />
         <!-- <link rel="stylesheet" type="text/css" href="../_/css/bootstrap-theme.css"/> -->
         <link rel="stylesheet" type="text/css" href="../_/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="../_/css/acajuegar.css"/>
