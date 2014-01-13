@@ -2,7 +2,7 @@
 <p>
     Nombre de buenas respuestas : <?php echo $this->nbBonneReponse; ?><br>
     Nombre de pregunatas : <?php echo $this->nbQuestions; ?><br>
-    Resultado : <?php echo $this->score; ?> puntos<br>
+    <!-- Resultado : <?php echo $this->score; ?> puntos<br> -->
 </p>
 <h3>Exitos :</h3>
 <?php foreach($this->succes as $succes): ?>

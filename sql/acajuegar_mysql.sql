@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 13 Janvier 2014 à 19:52
+-- Généré le: Lun 13 Janvier 2014 à 19:49
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.16
 
@@ -22,6 +22,20 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `acajuegar` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `acajuegar`;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie`
+--
+
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) DEFAULT NULL,
+  `categorie_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_CATEGORIE_id_1` (`categorie_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
 --
 -- Contenu de la table `categorie`
 --
@@ -29,6 +43,22 @@ USE `acajuegar`;
 INSERT INTO `categorie` (`id`, `libelle`, `categorie_id`) VALUES
 (1, 'historia', NULL),
 (2, 'geografia', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `choix`
+--
+
+CREATE TABLE IF NOT EXISTS `choix` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) DEFAULT NULL,
+  `afficherLibelle` tinyint(1) NOT NULL DEFAULT '0',
+  `estReponse` tinyint(1) DEFAULT NULL,
+  `question_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_CHOIX_id_QUESTION` (`question_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
 
 --
 -- Contenu de la table `choix`
@@ -96,6 +126,20 @@ INSERT INTO `choix` (`id`, `libelle`, `afficherLibelle`, `estReponse`, `question
 (59, 'Augusto Pinochet', 1, 0, 23),
 (60, 'Ernesto Guevara', 1, 1, 23);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `question`
+--
+
+CREATE TABLE IF NOT EXISTS `question` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `categorie_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_QUESTION_id_CATEGORIE` (`categorie_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+
 --
 -- Contenu de la table `question`
 --
@@ -122,6 +166,20 @@ INSERT INTO `question` (`id`, `libelle`, `categorie_id`) VALUES
 (22, 'Qué país Rafael Leonidas Trujillo Molina era el dictador', 1),
 (23, 'Sudamericano revolucionario que llevó a los guerrilleros cubanos', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `succes`
+--
+
+CREATE TABLE IF NOT EXISTS `succes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) DEFAULT NULL,
+  `nbQuestion` int(11) DEFAULT NULL,
+  `temps` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
 --
 -- Contenu de la table `succes`
 --
@@ -131,6 +189,28 @@ INSERT INTO `succes` (`id`, `libelle`, `nbQuestion`, `temps`) VALUES
 (3, 'El importante es participar', 5, 0),
 (4, 'Eres un explorador ', 10, 300),
 (5, '¡ Qué rapidez !', NULL, 150);
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  ADD CONSTRAINT `FK_CATEGORIE_id_1` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
+
+--
+-- Contraintes pour la table `choix`
+--
+ALTER TABLE `choix`
+  ADD CONSTRAINT `FK_CHOIX_id_QUESTION` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`);
+
+--
+-- Contraintes pour la table `question`
+--
+ALTER TABLE `question`
+  ADD CONSTRAINT `FK_QUESTION_id_CATEGORIE` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

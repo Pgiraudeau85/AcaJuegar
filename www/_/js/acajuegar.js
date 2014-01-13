@@ -1,3 +1,21 @@
+function actionZone(element) {
+    $(element)
+            .css('cursor', 'pointer')
+            .click(
+                    function() {
+                        seleccionar($(this).find("img").attr("value"),$(this).find("img"));
+                    }
+            )
+            .hover(
+                    function() {
+                        $(this).css('background', '#f7f7f7');
+                    },
+                    function() {
+                        $(this).css('background', '');
+                    }
+            );
+}
+
 function error(){
     $('#errorMessage').html("<div class=\"alert alert-error\">¡ Huy ! No has respondido a la pregunta</div>");
 }
@@ -5,6 +23,7 @@ function error(){
 /**
  - * permite de seleccionar un seleccion
  - * @param {int} id
+ - * @param {} imgSeleccionada
  - * @returns {void}
  - */
 

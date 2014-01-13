@@ -56,7 +56,7 @@ class ROOT_C_Main extends MVC_Controleur {
         $this->_vue->nbBonneReponse = $nbBonneReponse;
         $this->_vue->nbQuestions = $nbPreguntas;
         $this->_vue->score = $score;
-        $this->_vue->succes = $succes;
+        $this->_vue->succes = array_reverse($succes);
     }
 
 }

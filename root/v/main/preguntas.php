@@ -22,9 +22,10 @@
                     $string .= '<img style="width: 300px; height: 200px;" '
                             . 'src="../_/image/imgRep/' . $pregunta['choix'][$i]->id . '.jpg" '
                             . 'id="' . $pregunta['question']->id . '_' . $pregunta['choix'][$i]->id . '"'
-                            . 'onclick="seleccionar(\'' . $pregunta['question']->id . '\',this)" class="seleccion" />';
+                            . 'onclick="seleccionar(\'' . $pregunta['question']->id . '\',this)" class="seleccion" '
+                            . 'value="'.$pregunta['question']->id.'"/>';
                     if ($pregunta['choix'][$i]->afficherLibelle) {
-                        $string .= '<p>' . $pregunta['choix'][$i]->libelle . '</p>';
+                        $string .= '<p><i>' . $pregunta['choix'][$i]->libelle . '</i></p>';
                     }
                     $string .= '</div></li>';
                 }
@@ -43,6 +44,7 @@
         <script>
             $('#1').removeClass('display');
             setTiempo(<?php echo TEMPS_JEU; ?>);
+            actionZone('.thumbnail');
         </script>
     </div>
 </div>
