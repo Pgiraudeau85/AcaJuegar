@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 12 Janvier 2014 à 12:32
+-- Généré le: Lun 13 Janvier 2014 à 18:10
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.16
 
@@ -22,20 +22,6 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `acajuegar` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `acajuegar`;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `categorie`
---
-
-CREATE TABLE IF NOT EXISTS `categorie` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) DEFAULT NULL,
-  `categorie_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_CATEGORIE_id_1` (`categorie_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
 --
 -- Contenu de la table `categorie`
 --
@@ -43,22 +29,6 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 INSERT INTO `categorie` (`id`, `libelle`, `categorie_id`) VALUES
 (1, 'historia', NULL),
 (2, 'geografia', NULL);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `choix`
---
-
-CREATE TABLE IF NOT EXISTS `choix` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) DEFAULT NULL,
-  `afficherLibelle` tinyint(1) NOT NULL DEFAULT '0',
-  `estReponse` tinyint(1) DEFAULT NULL,
-  `question_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_CHOIX_id_QUESTION` (`question_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
 
 --
 -- Contenu de la table `choix`
@@ -112,21 +82,19 @@ INSERT INTO `choix` (`id`, `libelle`, `afficherLibelle`, `estReponse`, `question
 (45, 'Kola Real', 0, 0, 19),
 (46, 'Hugo Chavez', 1, 0, 20),
 (47, 'Augusto Pinochet', 1, 1, 20),
-(48, 'Jorge Videla', 1, 0, 20);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `question`
---
-
-CREATE TABLE IF NOT EXISTS `question` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `categorie_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_QUESTION_id_CATEGORIE` (`categorie_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+(48, 'Jorge Videla', 1, 0, 20),
+(49, 'Cuauhtemoc', 1, 1, 11),
+(50, 'Moctezuma II', 1, 0, 11),
+(51, 'Itzcoat', 1, 0, 11),
+(52, 'Francisco Pizarro', 1, 0, 21),
+(53, 'Diego de Almagro', 1, 0, 21),
+(54, 'Hernan Cortès', 1, 1, 21),
+(55, 'La República Dominicana', 1, 1, 22),
+(56, 'Cuba', 1, 0, 22),
+(57, 'Nicaragua', 1, 0, 22),
+(58, 'Fidel Castro', 1, 0, 23),
+(59, 'Augusto Pinochet', 1, 0, 23),
+(60, 'Ernesto Guevara', 1, 1, 23);
 
 --
 -- Contenu de la table `question`
@@ -143,27 +111,16 @@ INSERT INTO `question` (`id`, `libelle`, `categorie_id`) VALUES
 (8, 'Cuál es el plato nacional de Brasil', 2),
 (9, 'Cuál es la bandera de México', 2),
 (10, 'Cuál es el lago más grande de Sudamérica y también el más alto del mundo', 2),
-(11, 'Cuál es lo que más encontramos en la Patagonia', 2),
+(11, 'Qué gobernante azteca llevó el asalto contra los españoles durante la "noche triste" ', 1),
 (12, 'En qué país es la Copa del Mundo en 2014', 2),
 (13, 'Qué desierto se encuentra en Chile', 2),
 (14, 'Donde se situa el Rio Orinoco', 2),
 (16, 'Qué danza se originó en Argentina', 2),
 (19, 'Cuál es el nombre del refresco local del Perú más popular que Coca-Cola', 2),
-(20, 'Quién es el dictador del Chile desde 1973 a 1988', 1);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `succes`
---
-
-CREATE TABLE IF NOT EXISTS `succes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(255) DEFAULT NULL,
-  `nbQuestion` int(11) DEFAULT NULL,
-  `temps` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+(20, 'Quién es el dictador del Chile desde 1973 a 1988', 1),
+(21, 'Qué conquistador envió una expedición en 1518 para conquistar México', 1),
+(22, 'Qué país Rafael Leonidas Trujillo Molina era el dictador', 1),
+(23, 'Sudamericano revolucionario que llevó a los guerrilleros cubanos', 1);
 
 --
 -- Contenu de la table `succes`
@@ -171,28 +128,6 @@ CREATE TABLE IF NOT EXISTS `succes` (
 
 INSERT INTO `succes` (`id`, `libelle`, `nbQuestion`, `temps`) VALUES
 (1, 'Importante es participar', 1, 0);
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `categorie`
---
-ALTER TABLE `categorie`
-  ADD CONSTRAINT `FK_CATEGORIE_id_1` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
-
---
--- Contraintes pour la table `choix`
---
-ALTER TABLE `choix`
-  ADD CONSTRAINT `FK_CHOIX_id_QUESTION` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`);
-
---
--- Contraintes pour la table `question`
---
-ALTER TABLE `question`
-  ADD CONSTRAINT `FK_QUESTION_id_CATEGORIE` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
