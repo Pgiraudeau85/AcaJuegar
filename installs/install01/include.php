@@ -20,4 +20,4 @@ define('BDD_PWD','');
 
 
 //projet
-define('TEMPS_JEU',10);
+define('TEMPS_JEU',600);

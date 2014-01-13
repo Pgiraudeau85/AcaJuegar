@@ -37,6 +37,7 @@ function siguiente(id, divP) {
     for( i=0 ; i < $imgs.length; i++) {
         if($($imgs[i]).hasClass("seleccionada")) {
             hayRespuesta = true;
+            break;
         }
     }
     if(hayRespuesta){
