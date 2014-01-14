@@ -1,7 +1,7 @@
 <?php
-define('ROOT','c:/wamp/www/AcaJuegar/root/');
-define('V','c:/wamp/www/AcaJuegar/root/v/');
-define('MVC','c:/wamp/www/AcaJuegar/');
+define('ROOT','/var/www/acajuegar/root/');
+define('V','/var/www/acajuegar/root/v/');
+define('MVC','/var/www/acajuegar/');
 
 //connexion à la base de données
 /*

@@ -1,6 +1,9 @@
-<div class=" row text-center">
-    <div class="progress progress-striped active">
-        <div id="bar" class="bar"></div>
+<div>
+    <div>
+        <h4>Tiempo : </h4>
+        <div class="progress progress-striped active">
+            <div id="bar" class="bar"></div>
+        </div>
     </div>
     <div>
         <div id="errorMessage">
@@ -16,20 +19,20 @@
                 $string .='<h2>Pregunta numero ' . $numeroPregunta . '/' . $nbPreguntas . '</h2>';
                 $string .= '<h3>¿ ' . $pregunta['question']->libelle . ' ?</h3>';
                 $string .= '<div id="seleccion_' . $pregunta['question']->id . '">'; //début div des réponses
-                $string .= '<ul class="thumbnails">';
+                $string .= '<div class="row-fluid"><ul class="thumbnails">';
                 for ($i = 0; $i < sizeof($pregunta['choix']); $i++) {
                     $string .= '<li class="span3"><div class="thumbnail row text-center">';
                     $string .= '<img style="width: 300px; height: 200px;" '
                             . 'src="../_/image/imgRep/' . $pregunta['choix'][$i]->id . '.jpg" '
                             . 'id="' . $pregunta['question']->id . '_' . $pregunta['choix'][$i]->id . '"'
                             . 'onclick="seleccionar(\'' . $pregunta['question']->id . '\',this)" class="seleccion" '
-                            . 'value="'.$pregunta['question']->id.'"/>';
+                            . 'value="' . $pregunta['question']->id . '"/>';
                     if ($pregunta['choix'][$i]->afficherLibelle) {
                         $string .= '<p><i>' . $pregunta['choix'][$i]->libelle . '</i></p>';
                     }
                     $string .= '</div></li>';
                 }
-                $string .= '</ul>';
+                $string .= '</ul></div>';
                 $string .= '</div>'; //fin div choix
                 $string .= '<label class="btn btn-info" onClick="siguiente(' . $numeroPregunta . ',\'preguntas\')" >Pregunta siguiente</label>';
                 $string .= '</div>'; //fin div question
@@ -42,9 +45,11 @@
             <input id="inputPreguntas" type="hidden" name="inputPreguntas" value="<?php echo $nbPreguntas ?>"/>
         </form>
         <script>
-            $('#1').removeClass('display');
-            setTiempo(<?php echo TEMPS_JEU; ?>);
-            actionZone('.thumbnail');
+            $(document).ready(function() {
+                $('#1').removeClass('display');
+                setTiempo(<?php echo TEMPS_JEU; ?>);
+                actionZone('.thumbnail');
+            });
         </script>
     </div>
 </div>

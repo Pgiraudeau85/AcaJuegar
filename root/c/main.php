@@ -21,6 +21,7 @@ class ROOT_C_Main extends MVC_Controleur {
         foreach ($questionsQuery as $question) {
             $questions['question'] = $question;
             $questions['choix'] = ROOT_M_Choix::getChoixQuestion($question->id);
+            shuffle($questions['choix']);
             //on ajoute la question au tableau contenant toutes les questions avec leur choix + réponse
             $questionsChoix[] = $questions;
         }
@@ -47,7 +48,8 @@ class ROOT_C_Main extends MVC_Controleur {
             }
         }
         if(sizeof($reponses)>0){
-            $score = round(($nbBonneReponse / $nbPreguntas) * (TEMPS_JEU - $temps));
+            //$score = round(($nbBonneReponse / $nbPreguntas) * (TEMPS_JEU - $temps));
+            $score = round(($nbBonneReponse / $nbPreguntas) * 100);
         }else{
             $score = 0;
         }
