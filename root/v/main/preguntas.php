@@ -16,7 +16,7 @@
             $nbPreguntas = sizeof($this->preguntas);
             foreach ($this->preguntas as $pregunta) {
                 $string = '<div id=' . $numeroPregunta . ' class="display">'; //début div question
-                $string .='<h2>Pregunta numero ' . $numeroPregunta . '/' . $nbPreguntas . '</h2>';
+                $string .='<h2>Pregunta número ' . $numeroPregunta . '/' . $nbPreguntas . '</h2>';
                 $string .= '<h3>¿ ' . $pregunta['question']->libelle . ' ?</h3>';
                 $string .= '<div id="seleccion_' . $pregunta['question']->id . '">'; //début div des réponses
                 $string .= '<div class="row-fluid"><ul class="thumbnails">';
